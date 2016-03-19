@@ -4,7 +4,8 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
 (defroutes app-routes
-  (GET "/" [] "TODO List")
+  (GET "/" [] (slurp  "resources/public/under-construction.html"))
+  (route/resources "/")
   (route/not-found "Not Found"))
 
 (def app
