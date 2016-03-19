@@ -5,6 +5,7 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [cider/cider-nrepl "0.9.1"]
                  [compojure "1.5.0"]
+                 [hiccup "1.0.5"]
                  [mysql/mysql-connector-java "5.1.8"]
                  [org.clojure/java.jdbc "0.4.2"]
                  [refactor-nrepl "1.1.0"]
