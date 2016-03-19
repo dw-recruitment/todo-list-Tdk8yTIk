@@ -5,6 +5,7 @@
 
 (defroutes app-routes
   (GET "/" [] (slurp  "resources/public/under-construction.html"))
+  (GET "/about" [] (slurp "resources/public/about.html"))
   (route/resources "/")
   (route/not-found "Not Found"))
 
