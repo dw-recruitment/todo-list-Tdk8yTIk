@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS `todo` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `text` varchar(30) NOT NULL DEFAULT '',
+  `done` bit(1) NOT NULL DEFAULT b'0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
