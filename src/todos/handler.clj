@@ -4,6 +4,7 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.util.response :as response]
             [todos.data.db :as db]
+            [todos.views.about :as about]
             [todos.views.index :as index]))
 
 (defn- add
@@ -16,7 +17,7 @@
 
 (defroutes app-routes
   (GET "/" [] (-> (db/get-todolist) index/contents))
-  (GET "/about" [] (slurp "resources/public/about.html"))
+  (GET "/about" [] (about/contents))
   (POST "/" [todo] (add todo))
   (route/resources "/")
   (route/not-found "Not Found"))
