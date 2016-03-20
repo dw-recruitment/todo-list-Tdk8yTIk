@@ -2,16 +2,16 @@
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-            [todos.business :as business]
-            [todos.data.db :refer [initial-db-setup]]))
+            [todos.data.db :refer [initial-db-setup get-todolist]]
+            [todos.views.index :as index]))
 
 (defroutes app-routes
-  (GET "/" [] (slurp  "resources/public/under-construction.html"))
+  (GET "/" [] (-> (get-todolist) index/contents))
   (GET "/about" [] (slurp "resources/public/about.html"))
   (route/resources "/")
   (route/not-found "Not Found"))
 
-(defonce db-setup (initial-db-setup business/db-settings))
+(defonce db-setup (initial-db-setup))
 
 (def app
   (wrap-defaults app-routes site-defaults))

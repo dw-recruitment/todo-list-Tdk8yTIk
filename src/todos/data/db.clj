@@ -1,6 +1,7 @@
 (ns todos.data.db
   (require [clojure.java.io :as io]
-           [clojure.java.jdbc :as sql]))
+           [clojure.java.jdbc :as sql]
+           [todos.business :as business]))
 
 (defn- db-spec
   [settings]
@@ -11,6 +12,7 @@
      :user        username
      :password    password}))
 
+(def db-conn (db-spec business/db-settings))
 (defn initial-db-setup
   [db-settings]
   (let [db-conn (db-spec db-settings)]
