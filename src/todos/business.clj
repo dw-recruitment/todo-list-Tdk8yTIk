@@ -5,3 +5,5 @@
    :db-name "todolist"
    :username "user1"
    :password "user1"})
+
+(def max-todo-text-length 50)
