@@ -7,7 +7,7 @@
   []
   (page
    "About"
-   [:div
+   [:div#about
     [:h1 "About This Project"]
 
     [:h3 "This project intends to provide TODO List with the following features:"]

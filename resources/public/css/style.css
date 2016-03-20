@@ -1,17 +1,42 @@
 /* For this assignment, this is a single file instead of creating styles directory */
+div {
+    font-family: arial, sans-serif;
+}
 
 div#todolist {
     margin: 0 auto;
-    width: 500px;
+    width: 580px;
 }
 
 div#todolist h1{
     text-align: center;
 }
 
+div#about {
+    width: 50%;
+}
+
+div#form {
+    margin: 0 auto;
+    padding-top: 30px;
+    width: 580px;
+}
+
+div#form input[type=text] {
+    font-size: 24px;
+    margin-right: 15px;
+    width: 420px;
+}
+
+div#form input[type=submit] {
+    font-size: 24px;
+    -webkit-appearance: button;
+}
+
 table {
     border-collapse: collapse;
-    width: 500px;
+    font-size: 18px;
+    width: 580px;
 }
 
 table, th, td {
