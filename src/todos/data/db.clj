@@ -48,3 +48,8 @@
   [id]
   (let [current-status (get-status id)]
     (sql/update! db-conn :todo {:done (not current-status)} ["id=?" id] )))
+
+(defn delete-todo
+  "Given id, delete a TODO item."
+  [id]
+  (sql/delete! db-conn :todo ["id=?" id]))
