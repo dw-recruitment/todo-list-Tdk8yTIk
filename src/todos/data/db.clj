@@ -23,6 +23,8 @@
 (defn initial-db-setup
   []
   (do
+    ;; TODO: Try writing with create-table-ddl
+    ;; (though my preference is sql files for migration for non-programmers)
     (sql/execute! db-conn [(slurp (io/resource "migration/create-todo-table.sql"))])
     (when (empty? (get-todolist))
       (sql/insert! db-conn  :todo
@@ -34,6 +36,7 @@
 (defn add-todo
   "Given todo as string, add a new TODO to the table."
   [todo]
+  ;; TODo: Check the length of text.
   (sql/insert! db-conn :todo {:text todo}))
 
 (defn- get-status

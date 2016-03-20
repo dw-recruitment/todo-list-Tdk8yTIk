@@ -7,7 +7,7 @@
             [todos.views.about :as about]
             [todos.views.index :as index]))
 
-;; Hint: One way to break the app is enter a TODO text that is longer than
+;; Hint: One way to break the app is enter a TODO text that is longer than 50 ;-)
 (defn- wrap-exception-handler
   "Given a handler, return a function which wraps request handler
    with exception handler by showing animated gif for 500."
