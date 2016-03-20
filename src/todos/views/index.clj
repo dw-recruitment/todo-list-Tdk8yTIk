@@ -4,11 +4,16 @@
            [ring.util.anti-forgery :as anti-forgery]
            [todos.views.page :refer [page]]))
 
+(defn- todo-status
+  "Given done? as boolean, return 'Done' if true; 'TODO', otherwise."
+  [done?]
+  (if done? "Done" "TODO"))
+
 (defn- todo-item
   "Given a todo item as a map with id, text, and done keys,
    return a list of td tags for table to be displayed in a row."
   [{:keys [id text done]}]
-  (list [:td.center nil id] [:td nil text] [:td nil done]))
+  (list [:td.center nil id] [:td nil text] [:td.center nil (todo-status done)]))
 
 (defn contents
   "Given todo list data as a vector (or a sequence),
