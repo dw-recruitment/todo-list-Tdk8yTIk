@@ -17,7 +17,7 @@
 (defn get-todolist
   "Returs every data from the todo table as a vector (of maps)."
   []
-  (-> (sql/query db-conn ["SELECT * FROM `todo`;"])
+  (-> (sql/query db-conn ["SELECT * FROM `todo` ORDER BY `done` DESC, `id` ASC;"])
       vec))
 
 (defn initial-db-setup
