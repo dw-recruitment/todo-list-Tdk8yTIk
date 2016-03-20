@@ -13,7 +13,8 @@ div#todolist h1{
 }
 
 div#about {
-    width: 50%;
+    margin: 0 auto;
+    gwidth: 50%;
 }
 
 div#form {
