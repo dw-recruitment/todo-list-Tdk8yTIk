@@ -13,6 +13,13 @@
      :password    password}))
 
 (def db-conn (db-spec business/db-settings))
+
+(defn get-todolist
+  "Returs every data from the todo table as a vector (of maps)."
+  []
+  (-> (sql/query db-conn ["SELECT * FROM `todo`;"])
+      vec))
+
 (defn initial-db-setup
   [db-settings]
   (let [db-conn (db-spec db-settings)]
