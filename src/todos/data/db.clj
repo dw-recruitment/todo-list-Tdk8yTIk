@@ -35,3 +35,16 @@
   "Given todo as string, add a new TODO to the table."
   [todo]
   (sql/insert! db-conn :todo {:text todo}))
+
+(defn- get-status
+  "Given id, return doneness status of the TODO item."
+  [id]
+  (->> (sql/query db-conn ["SELECT `done` FROM `todo` WHERE `id` = ?" id])
+       first
+       :done))
+
+(defn toggle-status
+  "Given id, toggle doneness status"
+  [id]
+  (let [current-status (get-status id)]
+    (sql/update! db-conn :todo {:done (not current-status)} ["id=?" id] )))
