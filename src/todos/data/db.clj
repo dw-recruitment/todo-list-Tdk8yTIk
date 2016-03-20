@@ -21,10 +21,10 @@
       vec))
 
 (defn initial-db-setup
-  [db-settings]
-  (let [db-conn (db-spec db-settings)]
-    (do
-      (sql/execute! db-conn [(slurp (io/resource "migration/create-todo-table.sql"))])
+  []
+  (do
+    (sql/execute! db-conn [(slurp (io/resource "migration/create-todo-table.sql"))])
+    (when (empty? (get-todolist))
       (sql/insert! db-conn  :todo
                    {:text "Purchase Elements of Clojure" :done 1}
                    {:text "Reach Chapter 1 of Elements of Clojure"}
