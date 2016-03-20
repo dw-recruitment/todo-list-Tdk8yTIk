@@ -30,3 +30,8 @@
                    {:text "Reach Chapter 1 of Elements of Clojure"}
                    {:text "Renew Passport"}
                    {:text "Make a dental appointment" :done 1}))))
+
+(defn add-todo
+  "Given todo as string, add a new TODO to the table."
+  [todo]
+  (sql/insert! db-conn :todo {:text todo}))
