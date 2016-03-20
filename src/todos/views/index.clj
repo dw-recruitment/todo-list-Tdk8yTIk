@@ -12,11 +12,16 @@
         (if done
           [:td.done text]
           [:td nil text])
-        ;; TODO: Ajaxify
+        ;; TODO: Ajaxify both buttons
         [:td.center nil (form/form-to [:post "/toggle?"]
                                       (anti-forgery/anti-forgery-field)
                                       (form/hidden-field "id" id)
-                                      (form/submit-button "Complete"))]))
+                                      (form/submit-button "Complete"))]
+
+        [:td.center nil (form/form-to [:post "/delete?"]
+                                      (anti-forgery/anti-forgery-field)
+                                      (form/hidden-field "id" id)
+                                      (form/submit-button "Delete"))]))
 
 (defn contents
   "Given todo list data as a vector (or a sequence),
@@ -31,7 +36,7 @@
      [:h1 "TODO List"]
      [:table nil
       [:thead nil
-       [:tr nil '([:th nil "ID"] [:th nil "TODO"] [:th nil "Toggle Status"])]]
+       [:tr nil '([:th nil "ID"] [:th nil "TODO"] [:th nil "Toggle Status"] [:th nil "Delete"])]]
       [:tbody nil
        (for [row data]
          [:tr nil (todo-item row)])]]]
