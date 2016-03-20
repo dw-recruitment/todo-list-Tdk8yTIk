@@ -4,11 +4,6 @@
            [ring.util.anti-forgery :as anti-forgery]
            [todos.views.page :refer [page]]))
 
-(defn- todo-status
-  "Given done? as boolean, return 'Done' if true; 'TODO', otherwise."
-  [done?]
-  (if done? "Done" "TODO"))
-
 (defn- todo-item
   "Given a todo item as a map with id, text, and done keys,
    return a list of td tags for table to be displayed in a row."
@@ -17,7 +12,6 @@
         (if done
           [:td.done text]
           [:td nil text])
-        [:td.center nil (todo-status done)]
         ;; TODO: Ajaxify
         [:td.center nil (form/form-to [:post "/toggle?"]
                                       (anti-forgery/anti-forgery-field)
@@ -37,7 +31,7 @@
      [:h1 "TODO List"]
      [:table nil
       [:thead nil
-       [:tr nil '([:th nil "ID"] [:th nil "TODO"] [:th nil "Done?"] [:th nil "Toggle Status"])]]
+       [:tr nil '([:th nil "ID"] [:th nil "TODO"] [:th nil "Toggle Status"])]]
       [:tbody nil
        (for [row data]
          [:tr nil (todo-item row)])]]]
