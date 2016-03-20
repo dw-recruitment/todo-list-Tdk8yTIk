@@ -1,9 +1,23 @@
 /* For this assignment, this is a single file instead of creating styles directory */
 
+div#todolist {
+    margin: 0 auto;
+    width: 500px;
+}
+
+div#todolist h1{
+    text-align: center;
+}
+
 table {
     border-collapse: collapse;
+    width: 500px;
 }
 
 table, th, td {
     border: 1px solid gray;
+}
+
+.center {
+    text-align: center;
 }

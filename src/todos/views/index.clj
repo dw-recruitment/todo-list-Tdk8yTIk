@@ -6,7 +6,7 @@
   "Given a todo item as a map with id, text, and done keys,
    return a list of td tags for table to be displayed in a row."
   [{:keys [id text done]}]
-  (list [:td nil id] [:td nil text] [:td nil done]))
+  (list [:td.center nil id] [:td nil text] [:td nil done]))
 
 (defn contents
   "Given todo list data as a vector (or a sequence),
@@ -15,7 +15,7 @@
   (page
    "TODO List"
 
-   [:div
+   [:div#todolist
      [:h1 "TODO List"]
      [:table nil
       [:thead nil
