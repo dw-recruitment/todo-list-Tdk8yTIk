@@ -14,7 +14,9 @@
    return a list of td tags for table to be displayed in a row."
   [{:keys [id text done]}]
   (list [:td.center nil id]
-        [:td nil text]
+        (if done
+          [:td.done text]
+          [:td nil text])
         [:td.center nil (todo-status done)]
         ;; TODO: Ajaxify
         [:td.center nil (form/form-to [:post "/toggle?"]

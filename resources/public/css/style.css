@@ -45,6 +45,11 @@ table, th, td {
     padding: 5px;
 }
 
+
 .center {
     text-align: center;
+}
+
+.done {
+    text-decoration: line-through;
 }
