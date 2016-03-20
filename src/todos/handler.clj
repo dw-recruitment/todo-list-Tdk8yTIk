@@ -7,10 +7,22 @@
             [todos.views.about :as about]
             [todos.views.index :as index]))
 
+;; Hint: One way to break the app is enter a TODO text that is longer than
+(defn- wrap-exception-handler
+  "Given a handler, return a function which wraps request handler
+   with exception handler by showing animated gif for 500."
+  [handler]
+  (fn [request]
+    (try
+      (handler request)
+      ;; TODO: Allow this page to accept a string for (.getMessage e)
+      (catch Exception e {:status 500 :body (slurp "resources/public/500-gif.html")}))))
+
 (defn- add
   "Given todo as string, insert a newe todo if not empty,
    then redirect to '/'."
   [todo]
+  ;; TODO: Change to (when (and (seq todo) (<= (count todo) business/max-todo-text-length))...
   (when (seq todo)
     (db/add-todo todo))
   (response/redirect "/"))
@@ -40,4 +52,4 @@
 
 ;; TODO: Consider handling of POST (see handler_test.clj)
 (def app
-  (wrap-defaults app-routes site-defaults))
+  (wrap-exception-handler (wrap-defaults app-routes site-defaults)))
