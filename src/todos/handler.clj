@@ -15,10 +15,17 @@
     (db/add-todo todo))
   (response/redirect "/"))
 
+(defn- toggle
+  "Given id, toggle doneness status of a TODO item."
+  [id] (println "toggle" id)
+  (db/toggle-status id)
+  (response/redirect "/"))
+
 (defroutes app-routes
   (GET "/" [] (-> (db/get-todolist) index/contents))
   (GET "/about" [] (about/contents))
   (POST "/" [todo] (add todo))
+  (POST "/toggle" [id] (toggle id))
   (route/resources "/")
   (route/not-found "Not Found"))
 
