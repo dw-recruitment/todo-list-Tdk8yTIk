@@ -1,0 +1,9 @@
+/* For this assignment, this is a single file instead of creating styles directory */
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid gray;
+}
